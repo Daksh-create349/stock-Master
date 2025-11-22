@@ -20,6 +20,7 @@ import {
   Info,
   Warehouse
 } from 'lucide-react';
+import { AIAssistant } from './AIAssistant';
 
 const SidebarItem = ({ to, icon: Icon, label, active }: any) => (
   <Link 
@@ -192,6 +193,8 @@ export const Layout: React.FC = () => {
         <main className="flex-1 overflow-y-auto p-4 md:p-8 bg-gray-50 dark:bg-gray-900 transition-colors relative">
           <Outlet />
         </main>
+        
+        <AIAssistant />
       </div>
     </div>
   );

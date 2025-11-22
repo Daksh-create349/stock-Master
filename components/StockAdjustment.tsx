@@ -94,7 +94,7 @@ export const StockAdjustment: React.FC = () => {
                  </div>
                  <div>
                    <span className="text-xs text-gray-500 dark:text-gray-400 uppercase font-bold">Value</span>
-                   <div className="text-xl font-bold text-gray-800 dark:text-white">${(selectedProduct.stock * selectedProduct.price).toFixed(2)}</div>
+                   <div className="text-xl font-bold text-gray-800 dark:text-white">₹{(selectedProduct.stock * selectedProduct.price).toLocaleString('en-IN')}</div>
                  </div>
               </div>
             )}

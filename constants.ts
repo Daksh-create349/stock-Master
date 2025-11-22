@@ -1,3 +1,4 @@
+
 import { Product, Operation, OperationType, OperationStatus, WarehouseLocation, Contact } from './types';
 
 // Helper to generate realistic-looking Mumbai warehouse locations
@@ -159,11 +160,12 @@ export const INITIAL_CONTACTS: Contact[] = [
 ];
 
 // Base manual products to ensure existing operations link correctly
+// Updated with INR prices
 const BASE_PRODUCTS: Product[] = [
-  { id: 'p1', name: 'Steel Rods', sku: 'RM-001', barcode: '10000001', category: 'Raw Material', uom: 'Units', stock: 100, location: 'Main Warehouse', price: 50, minStockRule: 20 },
-  { id: 'p2', name: 'Chair Frame', sku: 'WIP-001', barcode: '10000002', category: 'Work in Progress', uom: 'Units', stock: 45, location: 'Production Floor', price: 120, minStockRule: 10 },
-  { id: 'p3', name: 'Office Chair', sku: 'FG-001', barcode: '10000003', category: 'Finished Goods', uom: 'Units', stock: 8, location: 'Main Warehouse', price: 350, minStockRule: 15 },
-  { id: 'p4', name: 'Fabric Roll', sku: 'RM-002', barcode: '10000004', category: 'Raw Material', uom: 'Meters', stock: 200, location: 'Main Warehouse', price: 15, minStockRule: 50 },
+  { id: 'p1', name: 'Steel Rods', sku: 'RM-001', barcode: '10000001', category: 'Raw Material', uom: 'Units', stock: 100, location: 'Main Warehouse', price: 3500, minStockRule: 20 },
+  { id: 'p2', name: 'Chair Frame', sku: 'WIP-001', barcode: '10000002', category: 'Work in Progress', uom: 'Units', stock: 45, location: 'Production Floor', price: 1200, minStockRule: 10 },
+  { id: 'p3', name: 'Office Chair', sku: 'FG-001', barcode: '10000003', category: 'Finished Goods', uom: 'Units', stock: 8, location: 'Main Warehouse', price: 4500, minStockRule: 15 },
+  { id: 'p4', name: 'Fabric Roll', sku: 'RM-002', barcode: '10000004', category: 'Raw Material', uom: 'Meters', stock: 200, location: 'Main Warehouse', price: 850, minStockRule: 50 },
 ];
 
 // Generator function for dummy products
@@ -184,8 +186,8 @@ const generateProducts = (startId: number, count: number): Product[] => {
     // Distribute items across all warehouses including Mumbai ones
     const location = WAREHOUSES[Math.floor(Math.random() * WAREHOUSES.length)];
     
-    // Random price between 1 and 500
-    const price = parseFloat((Math.random() * 500 + 1).toFixed(2));
+    // Random price between 500 and 25000 INR
+    const price = parseFloat((Math.random() * 24500 + 500).toFixed(2));
     // Random stock between 0 and 1000
     const stock = Math.floor(Math.random() * 1000);
     // Random min stock rule

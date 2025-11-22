@@ -9,7 +9,7 @@ export const AIAssistant: React.FC = () => {
   const [isListening, setIsListening] = useState(false);
   const [transcript, setTranscript] = useState('');
   const [messages, setMessages] = useState<{role: 'user'|'bot', text: string}[]>([
-     { role: 'bot', text: "I am StockBot. How can I help you manage your inventory today?" }
+     { role: 'bot', text: "Namaste! I am StockBot. How can I help you manage your inventory today?" }
   ]);
   const [isProcessing, setIsProcessing] = useState(false);
 
@@ -29,7 +29,7 @@ export const AIAssistant: React.FC = () => {
     const recognition = new SpeechRecognition();
     recognition.continuous = false;
     recognition.interimResults = false;
-    recognition.lang = 'en-US';
+    recognition.lang = 'en-IN'; // Changed to Indian English
 
     recognition.onstart = () => setIsListening(true);
     recognition.onend = () => setIsListening(false);

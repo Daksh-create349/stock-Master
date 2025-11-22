@@ -138,7 +138,7 @@ export const ProductList: React.FC = () => {
                       {product.stock} {product.uom}
                     </span>
                   </td>
-                  <td className="px-6 py-4 text-sm text-right text-gray-600 dark:text-gray-300">${product.price.toFixed(2)}</td>
+                  <td className="px-6 py-4 text-sm text-right text-gray-600 dark:text-gray-300">₹{product.price.toLocaleString('en-IN')}</td>
                   <td className="px-6 py-4 text-right">
                     <div className="flex justify-end gap-2">
                       <button 
@@ -230,7 +230,7 @@ export const ProductList: React.FC = () => {
                   </select>
                 </div>
                  <div>
-                   <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Cost Price</label>
+                   <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Cost Price (INR)</label>
                    <input type="number" min="0" className="w-full p-2 border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded focus:ring-2 focus:ring-primary-500 transition-colors"
                     value={formData.price} onChange={e => setFormData({...formData, price: Number(e.target.value)})} />
                 </div>

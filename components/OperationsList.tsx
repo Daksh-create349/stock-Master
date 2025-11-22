@@ -240,9 +240,9 @@ export const OperationsList: React.FC = () => {
        };
     });
 
-    // Charges & Tax
-    const shippingCharge = op.type === OperationType.INTERNAL ? 0 : 150.00;
-    const handlingCharge = op.type === OperationType.INTERNAL ? 0 : 50.00;
+    // Charges & Tax (INR)
+    const shippingCharge = op.type === OperationType.INTERNAL ? 0 : 1200.00;
+    const handlingCharge = op.type === OperationType.INTERNAL ? 0 : 500.00;
     const taxableAmount = subtotal + shippingCharge + handlingCharge;
     const gstRate = 0.18; // 18% GST
     const gstAmount = taxableAmount * gstRate;
@@ -336,7 +336,7 @@ export const OperationsList: React.FC = () => {
                  <th style="width: 40%">Item Description</th>
                  <th style="width: 20%">SKU</th>
                  <th class="text-right" style="width: 10%">Qty</th>
-                 <th class="text-right" style="width: 15%">Rate</th>
+                 <th class="text-right" style="width: 15%">Rate (INR)</th>
                  <th class="text-right" style="width: 15%">Amount</th>
               </tr>
            </thead>
@@ -348,8 +348,8 @@ export const OperationsList: React.FC = () => {
                    </td>
                    <td class="font-mono">${item.sku}</td>
                    <td class="text-right"><b>${item.qty}</b> <span style="font-size:11px;color:#6b7280">${item.uom}</span></td>
-                   <td class="text-right">$${item.rate.toFixed(2)}</td>
-                   <td class="text-right">$${item.amount.toFixed(2)}</td>
+                   <td class="text-right">₹${item.rate.toLocaleString('en-IN')}</td>
+                   <td class="text-right">₹${item.amount.toLocaleString('en-IN')}</td>
                 </tr>
               `).join('')}
            </tbody>
@@ -363,29 +363,29 @@ export const OperationsList: React.FC = () => {
               </tr>
               <tr>
                  <td class="summary-label">Subtotal</td>
-                 <td class="summary-val">$${subtotal.toFixed(2)}</td>
+                 <td class="summary-val">₹${subtotal.toLocaleString('en-IN')}</td>
               </tr>
               <tr>
                  <td class="summary-label">Shipping Charges</td>
-                 <td class="summary-val">$${shippingCharge.toFixed(2)}</td>
+                 <td class="summary-val">₹${shippingCharge.toLocaleString('en-IN')}</td>
               </tr>
               <tr>
                  <td class="summary-label">Handling / Packing</td>
-                 <td class="summary-val">$${handlingCharge.toFixed(2)}</td>
+                 <td class="summary-val">₹${handlingCharge.toLocaleString('en-IN')}</td>
               </tr>
               <tr>
                  <td class="summary-label">GST (18%)</td>
-                 <td class="summary-val">$${gstAmount.toFixed(2)}</td>
+                 <td class="summary-val">₹${gstAmount.toLocaleString('en-IN')}</td>
               </tr>
               <tr class="total-row">
                  <td>Grand Total</td>
-                 <td class="text-right">$${grandTotal.toFixed(2)}</td>
+                 <td class="text-right">₹${grandTotal.toLocaleString('en-IN')}</td>
               </tr>
            </table>
         </div>
 
         <div style="margin-top: 40px;">
-           <p style="font-size: 13px; color: #4b5563;"><b>Amount in Words:</b> ${grandTotal.toFixed(0)} Dollars Only.</p>
+           <p style="font-size: 13px; color: #4b5563;"><b>Amount in Words:</b> ${grandTotal.toFixed(0)} Rupees Only.</p>
         </div>
 
         <div class="footer">
