@@ -1,10 +1,10 @@
 
 import React, { useState } from 'react';
 import { useInventory } from '../context/InventoryContext';
-import { Box, Warehouse } from 'lucide-react';
+import { Box, Warehouse, ArrowLeft } from 'lucide-react';
 import { WAREHOUSES } from '../constants';
 
-export const LoginScreen: React.FC = () => {
+export const LoginScreen: React.FC<{ onBack?: () => void }> = ({ onBack }) => {
   const { login } = useInventory();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -19,13 +19,22 @@ export const LoginScreen: React.FC = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100 dark:bg-gray-900 px-4 transition-colors">
-      <div className="max-w-md w-full bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden transition-colors border border-transparent dark:border-gray-700">
-        <div className="bg-primary-600 p-8 text-center">
+      <div className="max-w-md w-full bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden transition-colors border border-transparent dark:border-gray-700 animate-fade-in-up">
+        <div className="bg-primary-600 p-8 text-center relative">
+           {onBack && (
+             <button 
+               onClick={onBack}
+               className="absolute top-6 left-6 p-2 bg-white/10 hover:bg-white/20 rounded-full text-white transition-colors backdrop-blur-sm"
+               title="Back to Home"
+             >
+               <ArrowLeft size={20} />
+             </button>
+           )}
            <div className="inline-flex items-center justify-center w-16 h-16 bg-white rounded-full mb-4 shadow-lg">
               <Box className="text-primary-600" size={32} />
            </div>
            <h1 className="text-3xl font-bold text-white">StockMaster</h1>
-           <p className="text-primary-100 mt-2">Modular Inventory Management System</p>
+           <p className="text-primary-100 mt-2">Sign in to your warehouse</p>
         </div>
         
         <div className="p-8">
@@ -62,7 +71,7 @@ export const LoginScreen: React.FC = () => {
                  type="password" 
                  required 
                  className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white focus:ring-2 focus:ring-primary-500 focus:outline-none transition-all placeholder-gray-400 dark:placeholder-gray-500"
-                 placeholder="Enter password for warehouse access"
+                 placeholder="Enter password"
                  value={password}
                  onChange={e => setPassword(e.target.value)}
                />
@@ -70,7 +79,7 @@ export const LoginScreen: React.FC = () => {
 
              <button 
                type="submit" 
-               className="w-full bg-primary-600 hover:bg-primary-700 text-white font-bold py-3 rounded-lg transition-all transform hover:scale-[1.02] shadow-lg"
+               className="w-full bg-primary-600 hover:bg-primary-700 text-white font-bold py-3 rounded-lg transition-all transform hover:scale-[1.02] shadow-lg shadow-primary-600/30"
              >
                Sign In
              </button>
