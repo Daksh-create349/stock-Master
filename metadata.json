@@ -1,0 +1,7 @@
+{
+  "name": "StockMaster IMS",
+  "description": "A modular Inventory Management System to streamline stock operations, replace manual tracking, and provide real-time inventory visibility.",
+  "requestFramePermissions": [
+    "geolocation"
+  ]
+}
