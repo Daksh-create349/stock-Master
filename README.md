@@ -68,12 +68,4 @@ Login Steps
 	6.	Once ready, click Ship Order → Mark Delivered.
 	7.	The system will auto-generate the official Tax Invoice.
 
-⸻
-
-If you’d like, I can also add:
-✅ Badges
-✅ Installation guide
-✅ API documentation
-✅ Screenshots layout
-✅ Folder structure
 
