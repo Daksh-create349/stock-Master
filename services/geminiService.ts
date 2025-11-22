@@ -4,7 +4,18 @@ import { Product, Operation, AICommandResponse } from "../types";
 
 // Helper to safe init API (environment variable should be set in real app)
 const getAiClient = () => {
-  const apiKey = process.env.API_KEY || ''; 
+  // Safe access to process.env to prevent "process is not defined" crashes in browser
+  let apiKey = '';
+  try {
+    // @ts-ignore
+    if (typeof process !== 'undefined' && process.env) {
+      // @ts-ignore
+      apiKey = process.env.API_KEY || '';
+    }
+  } catch (e) {
+    console.warn("Could not access process.env");
+  }
+
   if (!apiKey) return null;
   return new GoogleGenAI({ apiKey });
 };
@@ -12,7 +23,7 @@ const getAiClient = () => {
 export const analyzeInventory = async (products: Product[], operations: Operation[]) => {
   const ai = getAiClient();
   if (!ai) {
-    return "API Key is missing. Please configure the environment variable.";
+    return "AI Insights unavailable. Please configure the API_KEY environment variable.";
   }
 
   const lowStockItems = products.filter(p => p.stock <= p.minStockRule);
