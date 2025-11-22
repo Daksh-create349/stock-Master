@@ -1,13 +1,6 @@
-
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
-
-// CRITICAL FIX: Polyfill process for browser environments (Vite/Vercel) 
-// This prevents "Uncaught ReferenceError: process is not defined" which causes white screens
-if (typeof window !== 'undefined' && typeof process === 'undefined') {
-  (window as any).process = { env: {} };
-}
 
 // Error Boundary to catch runtime crashes and display a friendly message
 class ErrorBoundary extends React.Component<{children: React.ReactNode}, {hasError: boolean, error: Error | null}> {

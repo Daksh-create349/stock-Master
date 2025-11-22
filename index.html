@@ -4,6 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>StockMaster IMS</title>
+    <script>
+      // CRITICAL: Polyfill process and global for browser environments before any modules load
+      // This prevents "process is not defined" errors during module evaluation
+      if (typeof global === 'undefined') window.global = window;
+      if (typeof process === 'undefined') {
+        window.process = { env: { NODE_ENV: 'production' } };
+      }
+    </script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
@@ -73,5 +81,6 @@
 </head>
   <body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 font-sans antialiased transition-colors duration-200">
     <div id="root"></div>
+    <script type="module" src="./index.tsx"></script>
   </body>
 </html>
